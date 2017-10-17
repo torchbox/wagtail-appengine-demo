@@ -72,7 +72,7 @@ gsutil rsync -R static/ gs://<GCS BUCKET NAME>/static
 
 Set `<INSTANCE CONNECTION NAME>` in `app.yaml`.
 
-In settings/base.py, update `<GCS BUCKET NAME>` and `<GCP PROJECT ID>` 
+In `settings/base.py`, update `<GCS BUCKET NAME>` and `<GCP PROJECT ID>`, 
 and set `<YOUR SECRET KEY>`, e.g. using
 
 ```python
@@ -84,7 +84,7 @@ import random
 
 Deploy your site with `gcloud app deploy`.
 
-### Hardening
+## Hardening
 
 1. Once you know the production domain for your site, specify this in `ALLOWED_HOSTS` and `BASE_URL`.
 1. Update the origin in cors.json and rerun `gsutil cors set cors.json`
