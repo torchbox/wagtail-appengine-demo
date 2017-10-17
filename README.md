@@ -34,7 +34,7 @@ Replace `<DB PASSWORD>` and `<INSTANCE CONNECTION NAME>` in `wagae/settings/base
 
 1. Run Cloud SQL Proxy in a separate terminal:
 
-`cloud_sql_proxy -instances="<INSTANCE CONNECTION NAME>"=tcp:5432`
+`./cloud_sql_proxy -instances="<INSTANCE CONNECTION NAME>"=tcp:5432`
 
 2. Create Wagtail's database tables and an initial user:
 
