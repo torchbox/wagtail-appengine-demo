@@ -47,7 +47,7 @@ Replace `<DB PASSWORD>` and `<INSTANCE CONNECTION NAME>` in `wagae/settings/base
 
 `./manage.py runserver`
 
-You should be able to log in to the Wagtail admin interface at http://127.0.0.1:8000/admin/ with the user details you have just created.
+The styling will be broken, but you should be able to log in to the Wagtail admin interface at http://127.0.0.1:8000/admin/ with the user details you have just created.
 
 ## Create a bucket for static content
 
