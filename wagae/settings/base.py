@@ -85,6 +85,15 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {'min_length': 9,}
+    },
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
+]
+
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -104,7 +113,7 @@ DEBUG = False
 SECRET_KEY = '<YOUR SECRET KEY>'
 
 # Wagtail settings
-WAGTAIL_SITE_NAME = "Wagtail on App Engine"
+WAGTAIL_SITE_NAME = "App Engine Demo"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
