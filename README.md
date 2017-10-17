@@ -16,6 +16,7 @@ These steps are detailed in the [Google Cloud documentation](https://cloud.googl
 ```
 git clone https://github.com/torchbox/wagtail-appengine-demo
 cd wagtail-appengine-demo
+mkvirtualenv wagtail-appengine-demo # or your preferred method of creating a virtualenv
 pip install -r requirements.txt
 ```
 
