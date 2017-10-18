@@ -106,13 +106,11 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = 'https://storage.googleapis.com/<GCS BUCKET NAME>/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-DEBUG = True
-SECRET_KEY = '<YOUR SECRET KEY>'
+DEBUG = False
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "App Engine Demo"
@@ -122,12 +120,10 @@ WAGTAIL_SITE_NAME = "App Engine Demo"
 BASE_URL = 'http://example.com'
 ALLOWED_HOSTS = ['*']
 
-STATICFILES_STORAGE='wagae.gcs.GCSStaticStorage'
+# Not currently used, since django-storages incorrectly escapes
+#STATICFILES_STORAGE='wagae.gcs.GCSStaticStorage'
 DEFAULT_FILE_STORAGE='wagae.gcs.GCSMediaStorage'
 
-#GS_BUCKET_PREFIX = '<GCS BUCKET NAME>'
-#GS_PROJECT_ID = '<GCP PROJECT ID>'
-
-STATIC_URL = 'https://storage.googleapis.com/' + GS_BUCKET_PREFIX + '-static/static/'
+STATIC_URL = 'https://storage.googleapis.com/' + GS_BUCKET_PREFIX + '-static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
