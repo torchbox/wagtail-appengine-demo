@@ -79,7 +79,7 @@ gcloud sql instances describe wagae --format='value(connection_name)'
 torchkube:europe-west2:wagae
 ```
 
-Replace `[CONNECTION_NAME]` with the connection name.
+We will refer to this as `[CONNECTION_NAME]` later.
 
 ## Create Google Storage buckets
 
@@ -121,11 +121,13 @@ common prefix of the two GCS buckets you created, e.g. `my-wagtail-site`.
 
 ## Install the database tables
 
-1. Run Cloud SQL Proxy in a separate terminal:
+Run Cloud SQL Proxy in a separate terminal:
 
 `./cloud_sql_proxy -instances="[CONNECTION_NAME]=tcp:5432"`
 
-2. Create Wagtail's database tables and an initial user:
+Replace `[CONNECTION_NAME]` with the connection name.
+
+Create Wagtail's database tables and an initial user:
 
 ```
 ./manage.py migrate
