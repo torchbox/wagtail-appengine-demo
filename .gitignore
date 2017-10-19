@@ -52,7 +52,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-local_settings.py
+/wagae/settings/local.py
 
 # Flask stuff:
 instance/
@@ -99,3 +99,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Editor swap / backup files
+*.sw?

@@ -63,17 +63,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wagae.wsgi.application'
 
+from wagae.settings.local import *
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'wagtail',
-        'USER': 'wagtail_user',
-        'PASSWORD': '<DB PASSWORD>',
+        'USER': 'wagtail',
+        'PASSWORD': DB_PASSWORD,
         'PORT': '5432',
     }
 }
 
-DATABASES['default']['HOST'] = '/cloudsql/<INSTANCE CONNECTION NAME>'
+DATABASES['default']['HOST'] = '/cloudsql/' + DB_CONNECTION_NAME
 if os.getenv('GAE_INSTANCE'):
     pass
 else:
@@ -104,13 +106,11 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = 'https://storage.googleapis.com/<GCS BUCKET NAME>/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEBUG = False
-SECRET_KEY = '<YOUR SECRET KEY>'
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "App Engine Demo"
@@ -120,8 +120,10 @@ WAGTAIL_SITE_NAME = "App Engine Demo"
 BASE_URL = 'http://example.com'
 ALLOWED_HOSTS = ['*']
 
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = '<GCS BUCKET NAME>'
-GS_PROJECT_ID = '<GCP PROJECT ID>'
+# Not currently used, since django-storages incorrectly escapes
+#STATICFILES_STORAGE='wagae.gcs.GCSStaticStorage'
+DEFAULT_FILE_STORAGE='wagae.gcs.GCSMediaStorage'
+
+STATIC_URL = 'https://storage.googleapis.com/' + GS_BUCKET_PREFIX + '-static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
