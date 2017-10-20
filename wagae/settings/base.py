@@ -114,14 +114,13 @@ DEBUG = False
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "App Engine Demo"
+WAGTAIL_ENABLE_UPDATE_CHECK = False
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 ALLOWED_HOSTS = ['*']
 
-# Not currently used, since django-storages incorrectly escapes
-#STATICFILES_STORAGE='wagae.gcs.GCSStaticStorage'
 DEFAULT_FILE_STORAGE='wagae.gcs.GCSMediaStorage'
 
 STATIC_URL = 'https://storage.googleapis.com/' + GS_BUCKET_PREFIX + '-static/'
