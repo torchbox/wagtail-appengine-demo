@@ -116,7 +116,7 @@ Collect the static files locally and upload them:
 
 ```
 ./manage.py collectstatic --noinput
-gsutil -m rsync -R static/ gs://my-wagtailsite-static/
+gsutil -m rsync -R static/ gs://my-wagtail-site-static/
 ```
 
 ## Check everything works
