@@ -123,7 +123,9 @@ gsutil -m rsync -R static/ gs://my-wagtail-site-static/
 
 `./manage.py runserver 0.0.0.0:8080`
 
-Click on the 'Web preview' button in the header of your Cloud Shell. You should be able to log in to the Wagtail admin interface, using the user details you have just created.
+Click on the 'Web preview' button in the header of your Cloud Shell. You should 
+be able to log in to the Wagtail admin interface, using the user details you 
+have just created.
 
 ## Deploy to App Engine
 
@@ -141,6 +143,7 @@ gcloud app deploy
 1. Once you know the production domain for your site, specify this in
    `ALLOWED_HOSTS` and `BASE_URL`.
 1. Update the origin in cors.json and rerun `gsutil cors set cors.json`
+1. Increase `SECURE_HSTS_SECONDS` (e.g. to 2592000, which is 30 days) after testing
 1. Google auth
 1. Search
 1. Email?
