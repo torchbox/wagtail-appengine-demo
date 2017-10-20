@@ -29,7 +29,7 @@ Create a new Cloud SQL instance, using MySQL:
 ```
 gcloud sql instances create wagae   \
     --assign-ip                     \
-    --database-version=MYSQL_5_7 \
+    --database-version=MYSQL_5_7    \
     --region=europe-west2           \
     --gce-zone=europe-west2-c       \
     --storage-size=50               \
