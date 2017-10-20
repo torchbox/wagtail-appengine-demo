@@ -98,7 +98,7 @@ common prefix of the two GCS buckets you created, e.g. `my-wagtail-site`.
 
 Run Cloud SQL Proxy in a new shell (press '+' in the header of your Cloud Shell):
 
-`cloud_sql_proxy -instances="[CONNECTION_NAME]=tcp:5432"`
+`cloud_sql_proxy -instances="[CONNECTION_NAME]=tcp:3306"`
 
 Replace `[CONNECTION_NAME]` with the connection name.
 
