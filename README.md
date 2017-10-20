@@ -60,8 +60,8 @@ We will refer to this as `[CONNECTION_NAME]` later.
 ## Create Google Storage buckets
 
 GCS will be used to store static assets and uploaded media.  Create two new
-buckets, using a common prefix. Note that bucket names must be globally unique 
-- you may want to use your project ID as the prefix.
+buckets, using a common prefix. Note that bucket names must be globally unique - 
+you may want to use your project ID as the prefix.
 
 ```
 gsutil mb gs://my-wagtail-site-static
