@@ -6,6 +6,7 @@ RUN virtualenv --no-download /env -p python3.6
 ENV VIRTUAL_ENV /env
 ENV PATH /env/bin:$PATH
 ADD requirements.txt /app/
+RUN apt-get install libmysqlclient-dev
 RUN pip install -r requirements.txt
 ADD . /app/
 CMD exec gunicorn -b :$PORT wagae.wsgi
