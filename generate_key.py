@@ -1,4 +1,4 @@
 import random
-''.join([random.SystemRandom().choice(
+print (''.join([random.SystemRandom().choice(
   'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-  ) for i in range(50)])
+  ) for i in range(50)]))
