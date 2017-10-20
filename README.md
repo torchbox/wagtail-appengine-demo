@@ -38,7 +38,7 @@ gcloud sql instances create wagae   \
     --tier=db-f1-micro
 ```
 
-Adjust region, zone storage and machine size (tier) options as necessary.  While PostgreSQL is a more common option for Django and Wagtail developers, it is currently on available in beta on Google Cloud SQL.
+Adjust region, zone storage and machine size (tier) options as necessary. While PostgreSQL is a more common option for Django and Wagtail developers, it is currently only available in beta on Google Cloud SQL.
 
 Create a new user and database, substituting a secure password for
 `[DB_PASSWORD]`:
