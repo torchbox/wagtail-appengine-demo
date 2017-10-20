@@ -126,3 +126,13 @@ DEFAULT_FILE_STORAGE='wagae.gcs.GCSMediaStorage'
 STATIC_URL = 'https://storage.googleapis.com/' + GS_BUCKET_PREFIX + '-static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SESSION_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 60 # Increase this to e.g. 2592000 (30 days) after testing
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
