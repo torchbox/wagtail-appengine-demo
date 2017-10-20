@@ -1,5 +1,5 @@
 # [START runtime]
-runtime: python
+runtime: custom
 env: flex
 entrypoint: gunicorn -b :$PORT wagae.wsgi
 
