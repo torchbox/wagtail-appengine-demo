@@ -67,7 +67,7 @@ from wagae.settings.local import *
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'wagtail',
         'USER': 'wagtail',
         'PASSWORD': DB_PASSWORD,
