@@ -6,6 +6,7 @@ This is the simplest possible Wagtail site on Google Cloud, using App Engine Fle
 
 1. A project has been created in the Google Cloud Platform Console
 2. Billing has been enabled for your project
+3. The Cloud SQL API has [been enabled](https://console.cloud.google.com/flows/enableapi?apiid=sqladmin.googleapis.com&redirect=https://cloud.google.com/python/django/flexible-environment&showconfirmation=true)
 
 These steps are detailed in the [Google Cloud documentation](https://cloud.google.com/python/django/flexible-environment#before-you-begin).
 
