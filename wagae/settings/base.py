@@ -71,7 +71,7 @@ DATABASES = {
         'NAME': 'wagtail',
         'USER': 'wagtail',
         'PASSWORD': DB_PASSWORD,
-        'PORT': '5432',
+        'PORT': '3306',
     }
 }
 
