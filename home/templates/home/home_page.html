@@ -1,11 +1,27 @@
 {% extends "base.html" %}
-
-{% block body_class %}template-homepage{% endblock %}
-
+{% load wagtailcore_tags wagtailimages_tags %}
+    
 {% block content %}
-    <h1>Welcome to your new Wagtail site!</h1>
-
-    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).</p>
-
-    <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
+    <h1 class="f1 lh-solid sans-serif short">{{ page.title }}</h1>
+    
+    {% for child in self.body %} 
+        {% if child.block_type == 'heading' %}
+            <h2>{{ child.value }}</h2>
+        {% elif child.block_type == 'paragraph' %}
+            <span class="f3">{{ child }}</span>
+        {% elif child.block_type == 'image' %}
+            {% if child.value.width > child.value.height %}
+                {% image child.value width-1800 as tmp_photo %}
+            {% else %}
+                {% image child.value width-1200 as tmp_photo %}
+            {% endif %}
+            <img src="{{ tmp_photo.url }}" 
+                {# https://stackoverflow.com/a/33280889 #}
+                width="{% widthratio tmp_photo.width 2 1 %}"
+                alt="{{ tmp_photo.title }}"/>
+        {% else %}
+            {{ child }}
+        {% endif %} 
+    {% endfor %}
+    <p class="meta i">{{ page.date }}</p>
 {% endblock %}
