@@ -1,10 +1,7 @@
 {% load static wagtailuserbar %}
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,24 +18,27 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/wagae.css' %}">
-
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/tachyons.min.css' %}">
+        <style>
+          .big-image { font-size: 2rem; }
+          p {max-width: 34em}
+          .short {max-width: 14em}
+        </style>
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="athelas black-80">
         {% wagtailuserbar %}
+        <header class="bg-washed-blue ph3 ph5-ns pa1">
+            <h4 class="f4 fw1">
+                <a href = "/" class="no-underline">App Engine Demo</a>
+            </h4>
+        </header>
+        
+        <section>
+            <article class="lh-copy mh3 mh5-ns">
+                {% block content %}{% endblock %}
+            </article>
+        </section>
 
-        {% block content %}{% endblock %}
-
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/wagae.js' %}"></script>
-
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
     </body>
 </html>
