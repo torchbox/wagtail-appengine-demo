@@ -26,5 +26,5 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('summary'),
-        StreamFieldPanel('body', classname="full"),
+        StreamFieldPanel('body'),
     ]
