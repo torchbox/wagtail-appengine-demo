@@ -148,5 +148,27 @@ gcloud app deploy
 
 ## High security deployments
 
-1. Run two instances of Wagtail: one for editors, with firewalled access to the domain; one from a read-only replica of the database, with the admin UI disabled (remove `url(r'^admin/', include(wagtailadmin_urls)),` from `urls.py`).
-1. Static site generation: use [wagtail-bakery](https://github.com/moorinteractive/wagtail-bakery) to export the pages and assets at page publish time. Upload incremental changes to a CDN, e.g. using [Firebase hosting](https://firebase.google.com/docs/hosting/). See [wagtail-netlify](https://github.com/tomdyson/wagtail-netlify) for a similar process using an alternative static hosting provider.
+### Two instances
+
+Run two (clustered) instances of Wagtail: one for editors, with firewalled access to the domain; one from a read-only replica of the database, with the admin UI disabled (remove `url(r'^admin/', include(wagtailadmin_urls)),` from `urls.py`).
+
+### Static site generation
+
+Use [wagtail-bakery](https://github.com/moorinteractive/wagtail-bakery) to export the pages and assets at page publish time. Upload incremental changes to a CDN, e.g. using [Firebase hosting](https://firebase.google.com/docs/hosting/). See [wagtail-netlify](https://github.com/tomdyson/wagtail-netlify) for a similar process using an alternative static hosting provider.
+
+## Notes
+ 
+### App Engine Standard
+ 
+While it is possible to run Wagtail on App Engine Standard, we don't recommend this. App Engine Standard currently only supports Python 2.7, which will not be supported in the imminent releases of Django 2.0 and Wagtail 2.0.
+
+### Email
+
+Wagtail sends email notifications to authors and editors, e.g. to prompt reviews when pages have been submitted for moderation. The Google App Engine documentation suggests three third party providers of secure SMTP services:
+ - https://cloud.google.com/appengine/docs/flexible/python/sending-emails-with-mailgun
+ - https://cloud.google.com/appengine/docs/flexible/python/sending-emails-with-mailjet
+ - https://cloud.google.com/appengine/docs/flexible/python/sending-emails-with-sendgrid
+
+### Search
+
+Wagtail supports three backends for full-text search, each of which can power both the admin UI and public-facing search. These are Elasticsearch, PostgreSQL FTS and a simple database search. For simplicity's sake, this demo uses the latter. For more performant and feature-rich search, we currently recommend the Elasticsearch backend. Elasticsearch is available on Google Cloud either as a [Cloud Launcher App](https://console.cloud.google.com/launcher/details/click-to-deploy-images/elasticsearch) or through [Elastic.co's service](https://www.elastic.co/cloud/as-a-service/pricing).
