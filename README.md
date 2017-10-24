@@ -129,7 +129,7 @@ have just created.
 
 ## Deploy to App Engine
 
-Edit `app.yaml` and set `[CONNECTION_NAME]` to the Cloud SQL database connection
+Edit `app.yaml`, setting `[CONNECTION_NAME]` to the Cloud SQL database connection
 name.
 
 Then deploy the application:
@@ -146,15 +146,15 @@ gcloud app deploy
 1. Increase `SECURE_HSTS_SECONDS` (e.g. to 2592000, which is 30 days) after testing
 1. Change the `^admin/` entrypoint to a less guessable alternative
 
-## High security deployments
+## High security options
 
-### Two instances
+### Separate instances
 
 Run two (clustered) instances of Wagtail: one for editors, with firewalled access to the domain; one from a read-only replica of the database, with the admin UI disabled (remove `url(r'^admin/', include(wagtailadmin_urls)),` from `urls.py`).
 
 ### Static site generation
 
-Use [wagtail-bakery](https://github.com/moorinteractive/wagtail-bakery) to export the pages and assets at page publish time. Upload incremental changes to a CDN, e.g. using [Firebase hosting](https://firebase.google.com/docs/hosting/). See [wagtail-netlify](https://github.com/tomdyson/wagtail-netlify) for a similar process using an alternative static hosting provider.
+Use [wagtail-bakery](https://github.com/moorinteractive/wagtail-bakery) to export the pages and assets at page publish time. Upload incremental changes to a CDN, e.g. using [Firebase hosting](https://firebase.google.com/docs/hosting/). This approach provides the highest levels of performance and security, but more 'dynamic' features (e.g. search, form submissions, server-side A/B testing and personalisation) may become harder to implement. See [wagtail-netlify](https://github.com/tomdyson/wagtail-netlify) for a similar process using an alternative static hosting provider.
 
 ## Notes
  
