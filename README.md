@@ -144,7 +144,9 @@ gcloud app deploy
    `ALLOWED_HOSTS` and `BASE_URL`.
 1. Update the origin in cors.json and rerun `gsutil cors set cors.json`
 1. Increase `SECURE_HSTS_SECONDS` (e.g. to 2592000, which is 30 days) after testing
-1. Google auth
-1. Search
-1. Email?
-1. SSG to Firebase
+1. Change the `^admin/` entrypoint to a less guessable alternative
+
+## High security deployments
+
+1. Run two instances of Wagtail: one for editors, with firewalled access to the domain; one from a read-only replica of the database, with the admin UI disabled (remove `url(r'^admin/', include(wagtailadmin_urls)),` from `urls.py`).
+1. Static site generation: use [wagtail-bakery](https://github.com/moorinteractive/wagtail-bakery) to export the pages and assets at page publish time. Upload incremental changes to a CDN, e.g. using [Firebase hosting](https://firebase.google.com/docs/hosting/). See [wagtail-netlify](https://github.com/tomdyson/wagtail-netlify) for a similar process using an alternative static hosting provider.
